@@ -9,6 +9,23 @@ By creating the pull request back you say "Here's my solution, please make the c
 
 ## The Time Tracker 
 
+Your task is to write a simple time tracker. 
+
+![ui-proto](http://content.screencast.com/users/AndreyTS/folders/Jing/media/de514000-7be7-49d0-a846-f1759e9b10c9/2016-09-28_1900.png)
+
+You should be able to: 
+- just start the timer; thus a new unnamed task is created, and time is tracked; after stopping the timer, the task goes to the list of tasks below, and can be restarted later by clicking on the 'play' button near its name
+- start the timer again, the last run task should be started tracking
+- edit the name of currently running task or of any of the tasks in the list
+
+
+Technologies:
+TypeScript, React, Bootstrap, React-Bootstrap, **no JQuery**, 
+Use npm+webpack for building.
+You can use another tools, such as MobX, but all the code must be typed. It means, no `any`-typed values in the program. So, when using libs, you should use correct typings for them (e.g. `npm install --save-dev @types/react`)    
+
+Here is more formal definition of the requirements: 
+
 ```
 Task is "some named activity consumed some time from User"
 
