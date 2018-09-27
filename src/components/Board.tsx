@@ -25,7 +25,7 @@ export class Board extends React.Component<{taskStore: TaskStore}, {}> {
                     <Button onClick={this.onClick}>{newTask.isRunning ? "Stop" : "Start"}</Button>
                 </Form>
                 <Grid>
-                    { taskStore.tasks.map((task, idx) => <TaskItem task={ task } key={ idx }/>) }
+                    { taskStore.tasks.map((task, idx) => <TaskItem task={task} taskStore={taskStore} key={ idx }/>) }
                 </Grid>
             </div>
         );
