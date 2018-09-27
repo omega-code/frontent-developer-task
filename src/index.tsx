@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-
-import { Hello } from "./components/Hello";
+import { Board } from "./components/Board";
+import {taskStore} from "./TaskStore";
 
 ReactDOM.render(
-    <Hello name="World" />,
-    document.getElementById("example")
+    <Board taskStore={taskStore} />,
+    document.getElementById("board")
 );
