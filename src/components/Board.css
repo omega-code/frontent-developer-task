@@ -1,0 +1,10 @@
+.board {
+    margin-top: 10px;
+    max-width: 1000px;
+}
+
+.task-list {
+    max-width: 800px;
+    margin-top: 5px;
+    display: block;
+}

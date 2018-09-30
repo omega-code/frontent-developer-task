@@ -1,0 +1,38 @@
+.task-list-row button {
+    visibility: hidden;
+    border-radius: 0;
+}
+  
+.task-list-row:hover button {
+    visibility: visible;
+}
+
+.task-list-row {
+    padding: 3px;
+    border: 1px solid;
+    border-color: transparent;
+    border-radius: 0;
+}
+
+.task-list-row:hover {
+    border-color: rgb(190, 190, 190);
+}
+
+.task-name {
+    word-wrap: break-word;
+    margin-left: 5px;
+}
+
+.task-name-textbox {
+    border-radius: 0;
+}
+
+.task-name-textbox:focus{
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.running-task-text{
+    font-weight: bold;
+}

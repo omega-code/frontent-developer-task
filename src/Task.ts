@@ -2,13 +2,15 @@ import { observable } from "mobx";
 
 export interface ITask{
     name: string;
-    timeAmount: number; // seconds
+    /* In seconds */
+    timeAmount: number;
     lastRunTime: Date;
 }
 
 export class Task{
     @observable public name: string;
-    @observable public timeAmount: number; // seconds
+    /* In seconds */
+    @observable public timeAmount: number;
     @observable public lastRunTime: Date;
     @observable public isRunning: boolean;
 
@@ -22,6 +24,8 @@ export class Task{
     }
 
     start(){
+        if (this.isRunning)
+            return;
         this.timer = setInterval(() => {
             this.timeAmount += 1;
         }, 1000);
@@ -30,6 +34,8 @@ export class Task{
     }
 
     stop(){
+        if (!this.isRunning)
+            return;
         if (this.timer)
             clearInterval(this.timer);
         this.isRunning = false;

@@ -1,10 +1,11 @@
 import * as React from "react";
-import {Task} from "../Task";
-import {TaskStore} from "../TaskStore";
-import {observer} from "mobx-react";
-import {observable} from "mobx";
-import {Row, Col, Button, Glyphicon, Form, FormControl} from "react-bootstrap";
-import {ConvertToTimeString} from "../DateTimeHelper";
+import { Task } from "../Task";
+import { TaskStore, taskStore } from "../TaskStore";
+import { observer } from "mobx-react";
+import { observable } from "mobx";
+import { Row, Col, Button, Glyphicon, Form, FormControl, ButtonToolbar } from "react-bootstrap";
+import { convertToTimeString } from "../TimeSpanHelpers";
+const styles = require("./TaskItem.css");
 
 export interface TaskProps {
     task: Task;
@@ -13,67 +14,77 @@ export interface TaskProps {
 
 @observer
 export class TaskItem extends React.Component<TaskProps, {}> {
-    @observable isEditing : boolean;
+    @observable isEditing: boolean;
 
     render() {
         const task = this.props.task;
-        
+
         return (
-            <Row className="show-grid">
-                <Col xs={2} md={8}>
-                    <Button onClick={this.onStopStartClick}>
-                        <Glyphicon glyph={task.isRunning ? "stop" : "play" } />
+            <Row className={`show-grid ${styles.taskListRow} ${task.isRunning ? styles.runningTaskText : ""}`}>
+                <Col sm={1}>
+                    <Button onClick={this.handleTimerClick}>
+                        <Glyphicon glyph={task.isRunning ? "stop" : "play"} />
                     </Button>
                 </Col>
-                <Col xs={10} md={8}>
-                    <span style={{visibility: !this.isEditing ? 'visible' : 'hidden' }}>
+                <Col sm={4}>
+                    <p className={styles.taskName}
+                        style={{ display: !this.isEditing ? "inline" : "none" }}>
                         {task.name}
-                    </span>
-                    <Form style={{visibility: this.isEditing ? 'visible' : 'hidden' }}>
-                        <FormControl 
-                            type="text" 
+                    </p>
+                    <Form
+                        action="javascript:void(0);"
+                        style={{ display: this.isEditing ? "inline" : "none" }}>
+                        <FormControl
+                            type="text"
                             placeholder="Name your task"
                             value={task.name}
-                            onChange={this.onRename} 
+                            onChange={this.handleRename}
+                            className={styles.taskNameTextbox}
                         />
                     </Form>
-                    <Button onClick={this.onEditClick}>
-                        <Glyphicon glyph={this.isEditing ? "floppy-disk" : "pencil" } />
+                </Col>
+                <Col sm={1}>
+                    <Button onClick={this.handleEditClick}>
+                        <Glyphicon glyph={this.isEditing ? "floppy-disk" : "pencil"} />
                     </Button>
-                    <Button onClick={this.onRemoveClick}>
+                </Col>
+                <Col sm={2}>
+                    {convertToTimeString(task.timeAmount)}
+                </Col>
+                <Col sm={3}>
+                    {task.lastRunTime.toLocaleString()}
+                </Col>
+                <Col sm={1}>
+                    <Button onClick={this.handleRemoveClick}>
                         <Glyphicon glyph="remove" />
                     </Button>
-                </Col>
-                <Col xs={2} md={2}>
-                    {ConvertToTimeString(task.timeAmount)}
-                </Col>
-                <Col xs={2} md={2}>
-                    {task.lastRunTime.toLocaleString()}
                 </Col>
             </Row>
         );
     }
 
-    onRename = (e: React.FormEvent<FormControl>) => {
-        const {name, value} = e.target as HTMLInputElement;
+    handleRename = (e: React.FormEvent<FormControl>) => {
+        const { name, value } = e.target as HTMLInputElement;
         this.props.task.name = value;
     }
 
-    onStopStartClick = () => {
+    handleTimerClick = () => {
+        this.isEditing = false;
         let task = this.props.task;
-        if (task.isRunning){
-            task.stop();
+        if (task.isRunning) {
+            taskStore.stopRunningTask();
         }
-        else{
-            task.start();
+        else {
+            taskStore.startSavedTask(task);
         }
     }
 
-    onRemoveClick = () => {
+    handleRemoveClick = () => {
+        this.isEditing = false;
         this.props.taskStore.removeTask(this.props.task);
     }
 
-    onEditClick = () => {
+    handleEditClick = () => {
         this.isEditing = !this.isEditing;
     }
 }
