@@ -1,0 +1,39 @@
+{
+  "name": "pomodoro-timers",
+  "version": "1.0.0",
+  "description": "Frontend developer test - pomodoro technique timers",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Litart/frontent-developer-task.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Litart/frontent-developer-task/issues"
+  },
+  "homepage": "https://github.com/Litart/frontent-developer-task#readme",
+  "dependencies": {
+    "@types/react": "^16.4.14",
+    "@types/react-bootstrap": "^0.32.14",
+    "@types/react-dom": "^16.0.7",
+    "mobx": "^5.5.0",
+    "mobx-react": "^5.2.8",
+    "react": "^16.5.2",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.5.2"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "copy-webpack-plugin": "^4.5.2",
+    "css-loader": "^1.0.0",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "^0.23.0",
+    "typescript": "^3.0.3",
+    "webpack": "^4.20.2",
+    "webpack-dev-server": "^3.1.9"
+  }
+}
