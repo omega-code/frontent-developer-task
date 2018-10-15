@@ -1,3 +1,3 @@
 # -- -- --
 
-Just run npm start in command line
+Just run npm start in your command line
