@@ -18,12 +18,12 @@ export class App extends React.Component<object, IAppState> {
         }
     }
 
-    public componentDidMount() {
+    public componentDidMount(): void {
         var timerID = setInterval(() => this.tick(), 100);
         this.setState({timerID});
     }
 
-    public componentWillUnmount() {
+    public componentWillUnmount(): void {
         clearInterval(this.state.timerID);
     }
 
@@ -63,7 +63,7 @@ export class App extends React.Component<object, IAppState> {
         this.setState({taskList});
     }
 
-    public CreateNewRunningTask() {
+    public CreateNewRunningTask(): ITaskState {
         var newTask: ITaskState = {
             guid: "",
             lastRunTime: Date.now(),
@@ -77,7 +77,7 @@ export class App extends React.Component<object, IAppState> {
         return newTask;
     }
 
-    public stopTimerAndAssingGuidToNewTask(indexOfExistingTask: number) {
+    public stopTimerAndAssingGuidToNewTask(indexOfExistingTask: number): Array<ITaskState> {
         var newTasks = this.setTaskRunningWithoutSave("", false);
         var existingTask = newTasks[indexOfExistingTask];
         existingTask.guid = Helpers.generateGuid();
@@ -85,7 +85,7 @@ export class App extends React.Component<object, IAppState> {
         return newTasks;
     }
 
-    public topInputOnChange(e: React.ChangeEvent<HTMLInputElement>) {
+    public topInputOnChange(e: React.ChangeEvent<HTMLInputElement>): void {
         e.preventDefault();
         this.setState({currentTaskName: e.target.value})
     }
@@ -115,7 +115,7 @@ export class App extends React.Component<object, IAppState> {
         return newTasks;
     }
 
-    public removeTaskOnClick(e: React.MouseEvent<HTMLButtonElement>, guid: string) {
+    public removeTaskOnClick(e: React.MouseEvent<HTMLButtonElement>, guid: string): void {
         e.preventDefault();
         var newTasks = this.state.taskList.filter(r => r.guid !== guid);
         this.setState({ taskList: newTasks });               
@@ -196,28 +196,28 @@ interface ITaskAppearanceState {
 
 class TaskAppearance extends React.Component<ITaskState, ITaskAppearanceState> {
 
-    public renderTitle(title: string) {
-        return title.length === 0 ? '<Untitled Task>' : title;
-    }
-
     constructor(props: ITaskState) {
         super(props);
-
+        
         this.state = {
             editing: false,
         };
     }
 
-    public edit(element: HTMLElement) {
+    public renderTitle(title: string): string {
+        return title.length === 0 ? '<Untitled Task>' : title;
+    }
+
+    public edit(element: HTMLElement): void {
         this.setState({editing: true}, () => element.focus());
     }
 
-    public cancel(element: HTMLElement) {
+    public cancel(element: HTMLElement): void {
         this.setState({editing: false});
         element.textContent = this.renderTitle(this.props.title);
     }
 
-    public toggleEdit(e: React.SyntheticEvent<HTMLElement>) {
+    public toggleEdit(e: React.SyntheticEvent<HTMLElement>): void {
         e.stopPropagation();
         if (this.state.editing) {
             this.cancel(e.currentTarget);
@@ -227,12 +227,12 @@ class TaskAppearance extends React.Component<ITaskState, ITaskAppearanceState> {
         }
     }
 
-    public save(e: React.SyntheticEvent<HTMLElement>) {
+    public save(e: React.SyntheticEvent<HTMLElement>): void {
         this.props.renameTaskEvent(e, this.props.guid, e.currentTarget.textContent)
         this.setState({editing: false});
     }
 
-    public handleKeyDown(e: React.KeyboardEvent<HTMLElement>) {
+    public handleKeyDown(e: React.KeyboardEvent<HTMLElement>): void {
 
         switch (e.key) {
             case 'Enter':
