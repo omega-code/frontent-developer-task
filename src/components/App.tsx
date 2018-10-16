@@ -50,7 +50,7 @@ export class App extends React.Component<{}, IAppState> {
         const indexOfTaskWithEmptyGuid = taskList.map(e => e.guid).indexOf("");
 
         if (indexOfTaskWithEmptyGuid !== -1) {
-            taskList = this.stopTimerAndAssingGuidToNewTask(indexOfTaskWithEmptyGuid);
+            taskList = this.stopTimerAndAssignGuidToNewTask(indexOfTaskWithEmptyGuid);
         }
         else {
             const newTask = this.CreateNewRunningTask();
@@ -74,7 +74,7 @@ export class App extends React.Component<{}, IAppState> {
         return newTask;
     }
 
-    public stopTimerAndAssingGuidToNewTask(indexOfExistingTask: number): Array<ITaskState> {
+    public stopTimerAndAssignGuidToNewTask(indexOfExistingTask: number): Array<ITaskState> {
         const newTasks = this.setTaskRunningWithoutSave("", false);
         const existingTask = newTasks[indexOfExistingTask];
         existingTask.guid = Helpers.generateGuid();
