@@ -1,0 +1,73 @@
+$background-grey: #f3f3f3;
+$button-grey: #9EA3B0;
+
+body {
+    font-family: "Helvetia Neue", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.3rem;
+    background-color: $background-grey;
+    font-size: 100%;
+    color: $button-grey;
+}
+.task-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.form-group {
+    position: relative;
+}
+.form-group--input {
+    width: 80%;
+}
+.form-group--button {
+    width: 19%;
+}
+.input-group-append {
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%)
+}
+.input-to-add-a-task {
+    padding: 0 1rem;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    height: 2.5rem;
+    width: 100%;
+}
+button {
+    height: 2.5rem;
+    border: none;
+    font-size: 1.3rem;
+    margin-left: 20px;
+    cursor: pointer;
+    color: $button-grey;
+    padding: 0 1.2rem;
+    color: #fff;
+}
+.button-green {
+    background-color: green;
+    border-bottom: 4px solid darkgreen;
+}
+.button-red {
+    background-color: #e22828;
+    border-bottom: 4px solid darkred;
+}
+.is-completed {
+    text-decoration: line-through;
+    color: $button-grey;
+}
+.tdl-task {
+    padding: 3px;
+}
+.fa {
+    margin-right: 10px
+}
+.task-container {
+ font-weight: bold;
+}
+.task-item {
+    margin-bottom: 1.5rem
+}
