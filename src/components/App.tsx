@@ -132,18 +132,15 @@ export class App extends React.Component<{}, IAppState> {
 
     public generateTopTimer(taskOnTopIndex: number) : JSX.Element {
 
-        var topTimer;
-
         if (taskOnTopIndex !== -1) {
-            topTimer =
-            <div className="input-group-append">
-                <span>{Helpers.getPrettyfiedTime(this.state.taskList[taskOnTopIndex])}</span>
-            </div>
-        } else {
-            topTimer = <div></div>
+            return (
+                <div className="input-group-append">
+                    <span>{Helpers.getPrettyfiedTime(this.state.taskList[taskOnTopIndex])}</span>
+                </div>
+            );
         }
-        
-        return topTimer;
+
+        return(<div></div>);
     }
 
     public render(): JSX.Element {
