@@ -98,7 +98,7 @@ export class TaskItem extends React.Component<{ task: ITaskItemStore }, {}> {
             <td>
                 {/* TASK LAST RUN */}
                 <span className="cell-content">
-                        {lastRunTime.toISOString().substr(11, 8)}
+                        {lastRunTime.toLocaleTimeString()}
                 </span>    
             </td>
 

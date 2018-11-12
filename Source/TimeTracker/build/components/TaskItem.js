@@ -69,7 +69,7 @@ let TaskItem = class TaskItem extends React.Component {
             React.createElement("td", null,
                 React.createElement("span", { className: "cell-content" }, taskTimeAmount.toISOString().substr(11, 8))),
             React.createElement("td", null,
-                React.createElement("span", { className: "cell-content" }, lastRunTime.toISOString().substr(11, 8))),
+                React.createElement("span", { className: "cell-content" }, lastRunTime.toLocaleTimeString())),
             React.createElement("td", { className: "task-delete-col" },
                 React.createElement("div", { className: "cell-content" },
                     React.createElement("span", { className: "item-delete-btn", onClick: (e) => this.onItemDeleteClicked() },
