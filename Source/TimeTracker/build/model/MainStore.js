@@ -11,7 +11,7 @@ const TaskItemStore_1 = require("./TaskItemStore");
 class MainStore {
     constructor() {
         this.secondsElapsed = 0;
-        this.currentTaskName = "fake task 3";
+        this.currentTaskName = "";
         this.isTracking = false;
         this.taskList = [];
         this.taskToDelete = null;
