@@ -1,0 +1,91 @@
+﻿body {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 900px;
+}
+
+.checkbox-col{
+    width: 26px;
+}
+
+.last-run-time-col{
+    width: 150px;
+}
+
+.task-time-col{
+    width: 100px;
+
+}
+.task-delete-col{
+    width: 26px;
+}
+
+.cell-content{
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.header-cell-content{
+    display: block;
+    margin-bottom: 15px;
+}
+
+.item-start-btn{
+    margin-right : 8px;
+    margin-left : 8px;
+    display: inline-block;
+    background-color: lightgray;
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    padding-top:1px;
+    border-radius: 2px;
+}
+
+.item-delete-btn{
+    margin-left : 8px;
+    display: inline-block;
+    background-color: transparent;
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    padding-top:1px;
+}
+
+.item-start-btn:hover{
+    background-color: greenyellow;
+    cursor: pointer;
+}
+
+.item-delete-btn:hover{
+    color: firebrick;
+    cursor: pointer;
+}
+
+.task-name-field{
+    padding-left:4px;
+    padding-right:4px;
+    width: 100%;
+    display: inline-block;
+    background-color: transparent;
+    z-index: 10;
+}
+
+.empty-task-name-watermark{
+    opacity: 0.5;
+    position: absolute;
+    top : 0px;
+    left: 4px;
+    pointer-events: none;
+}
+
+.task-name-wrapper{
+    position: relative;
+}
+
+.no-tasks-message-panel{
+    text-align: center;
+    padding: 8px;
+    margin: 8px;
+}

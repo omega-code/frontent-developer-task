@@ -1,0 +1,28 @@
+﻿.new-task-form {
+    margin-top: 32px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.toggle-timer-button{
+    width: 7em;
+}
+
+.input-wrapper{
+    position: relative;
+}
+
+.new-task-input {
+    border-right: none;
+}
+
+.timer-text{
+    position: absolute;
+    top: 8px;
+    right: 120px;
+    text-align: right;
+    z-index: 2;
+    background-color: transparent;
+    border-left: none;
+    border-right: none;
+}
