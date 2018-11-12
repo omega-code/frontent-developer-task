@@ -50025,7 +50025,7 @@ let Main = class Main extends React.Component {
                         React.createElement("th", { className: "checkbox-col" },
                             React.createElement("br", null)),
                         React.createElement("th", null,
-                            React.createElement("span", { className: "header-cell-content" }, "Today")),
+                            React.createElement("span", { className: "header-cell-content" }, "Task name")),
                         React.createElement("th", { className: "task-time-col" },
                             React.createElement("span", { className: "header-cell-content" }, "Task time")),
                         React.createElement("th", { className: "last-run-time-col" },
