@@ -39,7 +39,7 @@ export class Main extends React.Component<{ store: IMainStore }, {}> {
                         <th className="checkbox-col">
                             <br/>
                         </th>
-                        <th><span className="header-cell-content">Today</span></th>
+                        <th><span className="header-cell-content">Task name</span></th>
                         <th className="task-time-col">
                             <span className="header-cell-content">Task time</span>
                         </th>
