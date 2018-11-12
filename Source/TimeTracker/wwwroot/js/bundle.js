@@ -50122,15 +50122,14 @@ let NewTaskForm = class NewTaskForm extends React.Component {
     ;
     render() {
         const { isTracking } = this.props.store;
-        const currentTaskElapsedTime = new Date(1970, 1, 1, 0, 0, 0, 0);
-        currentTaskElapsedTime.setSeconds(this.props.store.secondsElapsed);
+        const currentTaskElapsedTime = new Date(this.props.store.secondsElapsed * 1000);
         const button = React.createElement(react_bootstrap_1.Button, { className: "toggle-timer-button", onClick: this.onToggleButtonClicked }, isTracking ? "Stop" : "Start");
         return (React.createElement("div", { className: "input-wrapper" },
             React.createElement(react_bootstrap_1.FormGroup, { className: "new-task-form" },
                 React.createElement(react_bootstrap_1.InputGroup, null,
                     React.createElement(react_bootstrap_1.FormControl, { className: "new-task-input", type: "text", value: this.props.store.currentTaskName, placeholder: "Enter task name", onChange: this.handleTaskNameChange, disabled: isTracking, onKeyDown: (e) => this.onKeyDown(e) }),
                     React.createElement(react_bootstrap_1.InputGroup.Button, null, button))),
-            React.createElement("span", { className: "timer-text" }, currentTaskElapsedTime.toLocaleTimeString())));
+            React.createElement("span", { className: "timer-text" }, currentTaskElapsedTime.toISOString().substr(11, 8))));
     }
 };
 NewTaskForm = __decorate([
@@ -50206,8 +50205,7 @@ let TaskItem = class TaskItem extends React.Component {
     }
     render() {
         const { name, timeAmount, lastRunTime, isTracking } = this.props.task;
-        const taskTimeAmount = new Date(1970, 1, 1, 0, 0, 0, 0);
-        taskTimeAmount.setSeconds(timeAmount);
+        const taskTimeAmount = new Date(timeAmount * 1000);
         return (React.createElement("tr", null,
             React.createElement("td", { className: "checkbox-col" },
                 React.createElement("div", { className: "cell-content" },
@@ -50219,9 +50217,9 @@ let TaskItem = class TaskItem extends React.Component {
                     React.createElement("span", { className: "cell-content" },
                         React.createElement("span", { contentEditable: !isTracking, className: "task-name-field", onKeyDown: (e) => this.onTaskFieldKeyDown(e), onBlur: (e) => this.onTaskFieldFocusLost(e.target), onFocus: (e) => this.onTaskNameFocused(e.target), suppressContentEditableWarning: true }, name)))),
             React.createElement("td", null,
-                React.createElement("span", { className: "cell-content" }, taskTimeAmount.toLocaleTimeString())),
+                React.createElement("span", { className: "cell-content" }, taskTimeAmount.toISOString().substr(11, 8))),
             React.createElement("td", null,
-                React.createElement("span", { className: "cell-content" }, lastRunTime.toLocaleTimeString())),
+                React.createElement("span", { className: "cell-content" }, lastRunTime.toISOString().substr(11, 8))),
             React.createElement("td", { className: "task-delete-col" },
                 React.createElement("div", { className: "cell-content" },
                     React.createElement("span", { className: "item-delete-btn", onClick: (e) => this.onItemDeleteClicked() },

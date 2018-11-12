@@ -24,8 +24,7 @@ export class NewTaskForm extends React.Component<{ store: IMainStore }, {}> {
 
     public render() {
         const {isTracking} = this.props.store;
-        const currentTaskElapsedTime = new Date(1970, 1, 1, 0,0,0,0);
-        currentTaskElapsedTime.setSeconds( this.props.store.secondsElapsed );
+        const currentTaskElapsedTime = new Date(this.props.store.secondsElapsed  * 1000);
 
         const button = <Button className="toggle-timer-button" onClick={this.onToggleButtonClicked}>{isTracking ? "Stop" : "Start"}</Button>
 
@@ -49,7 +48,7 @@ export class NewTaskForm extends React.Component<{ store: IMainStore }, {}> {
                 </FormGroup>
 
                 <span className="timer-text"
-                >{currentTaskElapsedTime.toLocaleTimeString()}</span>
+                >{currentTaskElapsedTime.toISOString().substr(11, 8)}</span>
 
             </div>
         );

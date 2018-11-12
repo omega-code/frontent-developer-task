@@ -59,8 +59,7 @@ export class TaskItem extends React.Component<{ task: ITaskItemStore }, {}> {
     render() {
         const {name, timeAmount, lastRunTime, isTracking} = this.props.task;
         
-        const taskTimeAmount = new Date(1970, 1, 1, 0,0,0,0);
-        taskTimeAmount.setSeconds(timeAmount);
+        const taskTimeAmount = new Date(timeAmount * 1000);
 
         return (
             <tr>
@@ -93,13 +92,13 @@ export class TaskItem extends React.Component<{ task: ITaskItemStore }, {}> {
             <td>
                 {/* TASK TIME */}
                 <span className="cell-content">
-                    {taskTimeAmount.toLocaleTimeString()}
+                        {taskTimeAmount.toISOString().substr(11, 8)}
                 </span>
             </td>
             <td>
                 {/* TASK LAST RUN */}
                 <span className="cell-content">
-                    {lastRunTime.toLocaleTimeString()}
+                        {lastRunTime.toISOString().substr(11, 8)}
                 </span>    
             </td>
 
