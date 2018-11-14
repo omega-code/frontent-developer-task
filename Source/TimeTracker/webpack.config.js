@@ -1,6 +1,8 @@
 ﻿/// <binding BeforeBuild='Run - Development' />
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const devMode = true;
 
 module.exports = {
     mode: "development",
@@ -32,7 +34,7 @@ module.exports = {
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
-                    "style-loader",
+                    devMode ? "style-loader" : MiniCssExtractPlugin.loader,
                     "css-loader",
                     "sass-loader"
                 ],
@@ -44,7 +46,7 @@ module.exports = {
                         loader: "url-loader",
                         options: {
                             limit: 8192,
-                            // name: "assets/[hash].[ext]"
+                            name: "assets/[hash].[ext]"
                         }
                     }
                 ]

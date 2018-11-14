@@ -30,9 +30,6 @@ class MainStore implements IMainStore, ITaskManager {
     private timerId: NodeJS.Timeout;
     currentTaskStartTime: Date;
 
-    constructor() {
-    }
-
     public setItemActive(item: ITaskItemStore) {
         if (this.activeItem !== undefined && this.activeItem !== null) {
             this.activeItem.isActive = false;
